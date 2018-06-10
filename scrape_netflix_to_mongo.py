@@ -1,10 +1,12 @@
 from lib.netflix_scraper import NetflixSession
-from config.moodvies_config import GENRE_SEARCH_URLS
+from config.moodvies_config import GENRE_SEARCH_URLS, MONGO
 from pymongo import MongoClient
 
 
+MONGO_CONN = MONGO['conn_string']
+
 def get_movies_collection():
-    client = MongoClient('localhost', 27017)
+    client = MongoClient(MONGO_CONN)
     db = client.moodvies
     if db.movies.count() > 0:
         db.movies.drop()

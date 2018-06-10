@@ -3,6 +3,28 @@ networks:
   moodvies:
     driver: bridge
 services:
+  web:
+    container_name: web
+    hostname: web
+    networks: [ moodvies ]
+    image: moodvies:latest
+    volumes:
+      - .:/app/
+    ports: [ "8080:8080" ]
+    depends_on: [ "mongo" ]
+    entrypoint: python3
+    env_file: sandbox.env
+    command: app.py
+  scraper:
+    container_name: web
+    hostname: web
+    networks: [ moodvies ]
+    image: moodvies:latest
+    env_file: sandbox.env
+    volumes:
+      - .:/app/
+    entrypoint: python3
+    command: scrape_netflix_to_mongo.py
   mongo:
     container_name: mongo
     hostname: mongo

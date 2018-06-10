@@ -7,6 +7,7 @@ import json
 from collections import Counter
 from flask import Flask, jsonify, render_template
 from pymongo import MongoClient
+from config.moodvies_config import MONGO
 
 FORMAT = '%(asctime)s  %(levelname)s    %(message)s'
 logging.basicConfig(level=logging.DEBUG, format=FORMAT, stream=sys.stdout)
@@ -21,12 +22,13 @@ webapp.config["DEBUG"] = True
  
 DEFAULT_PORT = 8080
 app = Flask(__name__)
+MONGO_CONN = MONGO['conn_string']
 
 with open('moods.json') as f:
     MOODS = json.load(f)
 
 def get_movies_collection():
-    client = MongoClient('localhost', 27017)
+    client = MongoClient(MONGO_CONN)
     db = client.moodvies
     return db['movies']
 
