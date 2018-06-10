@@ -39,12 +39,11 @@ def load():
 def get_relevant_content(mood):
     movie_collection = get_movies_collection()
     filename, file_extension = os.path.splitext(mood)
-    print(MOODS)
-    cursor = movie_collection.find({"tags": {"$all": ['exciting']}})
-    for r in cursor:
-        print("yoyo")
-        print(r)
-    return jsonify({'mood': MOODS[filename]})
+    cursor = movie_collection.find({"genres": {"$in": ['exciting']}}, {"title": 1, "genres": 1, "sysnopsis": 1, "watch_url": 1, "_id": 0})    
+    logging.info("YOYOY")
+    results = list(cursor)
+    logging.info(results)
+    return jsonify(results)
 
 if __name__ == '__main__':
     logging.info('loading data...')
