@@ -1,0 +1,11 @@
+version: "3.0"
+networks:
+  moodvies:
+    driver: bridge
+services:
+  mongo:
+    container_name: mongo
+    hostname: mongo
+    networks: [ moodvies ]
+    image: mongo:3.2.12
+    ports: [ "27017:27017" ]

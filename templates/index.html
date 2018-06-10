@@ -1,0 +1,21 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/moodvies/static/index.js"></script>
+<link rel="stylesheet" href="/moodvies/static/index.css">
+
+<!-- <div class="mood-images">
+	<script>
+        loadMoodImages();
+	</script>
+</div>
+<img src="{{url_for('static', filename='smile.png')}}" /> -->
+
+<section class="row">
+    {% for image in images %}
+      <a href="{{url_for('get_relevant_content', mood=image) }}">
+        <img class="mood-image" src="{{url_for('static', filename='images/' + image) }}" />
+      </a>
+    {% endfor %}
+  </section>
