@@ -45,7 +45,7 @@ def get_relevant_content(mood):
     logging.info("YOYOY")
     results = list(cursor)
     logging.info(results)
-    return jsonify(results)
+    return render_template('movie_results.html', results=results)
 
 if __name__ == '__main__':
     logging.info('loading data...')
