@@ -15,12 +15,31 @@ services:
     entrypoint: python3
     env_file: sandbox.env
     command: app.py
+  hub:
+    image: selenium/hub
+    networks: [ moodvies ]
+    container_name: hub
+    hostname: hub
+    ports:
+      - 4444:4444
+  chrome:
+    image: selenium/node-chrome
+    networks: [ moodvies ]
+    container_name: chrome
+    hostname: chrome
+    environment:
+      HUB_HOST: hub
+    volumes:
+      - .:/app/
+    depends_on: [ "hub" ]
+    # ports: [ "4444:4444" ]
   scraper:
     container_name: web
     hostname: web
     networks: [ moodvies ]
     image: moodvies:latest
     env_file: sandbox.env
+    depends_on: [ "mongo", "chrome" ]
     volumes:
       - .:/app/
     entrypoint: python3

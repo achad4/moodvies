@@ -1,4 +1,6 @@
 import os
+from os import environ
+
 
 GENRE_SEARCH_URLS = {
     'movies' : {
@@ -10,4 +12,8 @@ GENRE_SEARCH_URLS = {
 
 MONGO = {
     'conn_string': os.environ['MONGO_CONN']
+}
+
+WEBDRIVER = {
+    'docker': environ.get('Docker') is not None
 }

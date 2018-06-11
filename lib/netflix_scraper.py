@@ -15,6 +15,8 @@ import re
 import pickle
 import logging
 import json
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+
 
 class NetflixSession:
     """This is a class capable of scraping DVD Netflix pages."""
@@ -50,6 +52,7 @@ class NetflixSession:
         options = ChromeOptions()
         options.add_argument('--headless')
         self.driver = webdriver.Chrome(executable_path='chromedriver', chrome_options=options)
+        # self.driver = webdriver.Remote(command_executor='http://hub:4444/wd/hub', desired_capabilities=DesiredCapabilities.CHROME)
         if self.cookies:
             self.driver.get('https://www.netflix.com/NotFound?prev=http%3A%2F%2Fwww.netflix.com%2F404')
             for i in range(len(self.cookies)):
