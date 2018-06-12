@@ -15,7 +15,7 @@ GENRE_SEARCH_URLS = {
 }
 
 MONGO = {
-    'conn_string': environ.get('MONGO_CONN')
+    'conn_string': environ.get('MONGODB_URI')
 }
 
 WEBDRIVER = {
