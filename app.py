@@ -28,9 +28,9 @@ with open('config/moods.json') as f:
     MOODS = json.load(f)
 
 def get_movies_collection():
-    db = MongoClient(MONGO_CONN)
-    # db = client.moodvies
-    return db['movies']
+    client = MongoClient(MONGO_CONN)
+    db = client.moodvies
+    return db['heroku_hfl52bmk']
 
 @webapp.route("/moodvies", methods=['GET'])
 def load():
