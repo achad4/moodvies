@@ -39,7 +39,7 @@ class NetflixSession:
         self.movies = []
         self.driver = None
         try:
-            with open('cookies.json') as f:
+            with open('config/cookies.json') as f:
                 self.cookies = json.load(f)
             # self.cookies = pickle.load(open(cookies_file, "rb"))
             logging.info('Cookies loaded from ' + cookies_file)

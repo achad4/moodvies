@@ -3,7 +3,8 @@ __pycache__
 chromedriver
 .DS_Store
 *.log
-*.json
+**/cookies.json
+**/settings.json
 *.png
 test.py
 *.jpg

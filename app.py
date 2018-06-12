@@ -24,7 +24,7 @@ DEFAULT_PORT = 8080
 app = Flask(__name__)
 MONGO_CONN = MONGO['conn_string']
 
-with open('moods.json') as f:
+with open('config/moods.json') as f:
     MOODS = json.load(f)
 
 def get_movies_collection():
