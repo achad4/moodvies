@@ -8,7 +8,7 @@ MONGO_CONN = MONGO['conn_string']
 
 def get_movies_collection():
     client = MongoClient(MONGO_CONN)
-    db = client.moodvies
+    db = client[MONGO_CONN.split('/')[-1]]
     if db.movies.count() > 0:
         db.movies.drop()
     return db.movies
