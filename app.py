@@ -50,4 +50,5 @@ def get_relevant_content(mood):
 if __name__ == '__main__':
     logging.info('loading data...')
     logging.info('running the web app...')
-    webapp.run("0.0.0.0", port=DEFAULT_PORT)
+    webapp.run(debug=True, use_reloader=True)
+    # webapp.run("0.0.0.0", port=DEFAULT_PORT)

@@ -15,7 +15,7 @@ GENRE_SEARCH_URLS = {
 }
 
 MONGO = {
-    'conn_string': os.environ['MONGO_CONN']
+    'conn_string': environ.get('MONGO_CONN')
 }
 
 WEBDRIVER = {
