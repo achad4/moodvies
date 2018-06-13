@@ -10,7 +10,7 @@ services:
     image: moodvies:latest
     volumes:
       - .:/app/
-    ports: [ "8080:8080" ]
+    ports: [ "5000:5000" ]
     depends_on: [ "mongo" ]
     entrypoint: python3
     env_file: sandbox.env

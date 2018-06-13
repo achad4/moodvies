@@ -32,7 +32,7 @@ def get_movies_collection():
     db = client[MONGO_CONN.split('/')[-1]]
     return db.movies
 
-@webapp.route("/moodvies", methods=['GET'])
+@webapp.route("/", methods=['GET'])
 def load():
     images = os.listdir(os.path.join(app.static_folder, "images"))
     return render_template('index.html', images=images)
@@ -41,8 +41,7 @@ def load():
 def get_relevant_content(mood):
     movie_collection = get_movies_collection()
     filename, file_extension = os.path.splitext(mood)
-    cursor = movie_collection.find({"genres": {"$in": ['exciting']}}, {"title": 1, "genres": 1, "sysnopsis": 1, "watch_url": 1, "_id": 0})    
-    logging.info("YOYOY")
+    cursor = movie_collection.find({"genres": {"$in": MOODS[filename]}}, {"title": 1, "genres": 1, "sysnopsis": 1, "watch_url": 1, "_id": 0})    
     results = list(cursor)
     logging.info(results)
     return render_template('movie_results.html', results=results)
