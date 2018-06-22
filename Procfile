@@ -1,1 +1,1 @@
-web: python app.pydfkn
+web: python app.py
